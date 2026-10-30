@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     app_env: str = "development"
     app_host: str = "127.0.0.1"
     app_port: int = 8000
-    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000"
+    cors_origins: str = "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8000,http://127.0.0.1:8000"
     indic_en_model: str = "ai4bharat/indictrans2-indic-en-dist-200M"
     en_indic_model: str = "ai4bharat/indictrans2-en-indic-dist-200M"
     model_device: str = "auto"
