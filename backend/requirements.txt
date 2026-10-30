@@ -1,0 +1,16 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9
+pydantic>=2.7
+pydantic-settings>=2.2
+python-dotenv>=1.0
+transformers>=4.51
+indictranstoolkit>=1.1.1
+sentencepiece>=0.2
+sacremoses>=0.1
+numpy>=2.1
+# Install PyTorch separately from https://pytorch.org/get-started/locally/
+# Optional: sqlalchemy>=2.0 psycopg[binary]>=3.2
+# Optional RAG: faiss-cpu sentence-transformers pypdf
+# Optional Gemini SDK: google-genai
+# Optional tests: pytest>=8.0 httpx>=0.27

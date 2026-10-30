@@ -1,0 +1,3 @@
+﻿profile_id,display_label,district,state,age_years,gender,occupation,land_area,land_unit,annual_income_inr,class_level,social_category,preferred_language,data_quality_note
+SUN_PREVIEW,Sunita Devi (PPT persona),Mandi,Himachal Pradesh,52,female,farmer,3,bigha,,,,Hindi / Himachali,"PPT specifies age 52, Mandi, small farmer, 3 bigha, Hindi/Himachali. Annual income, land-record validation, exact hectare conversion, exclusions and application status are not given."
+STUDENT_DEMO,Student demo (PPT scenario),,Himachal Pradesh,,,,,,,,,Hindi,"PPT only says Hindi text input for a student seeking HP scholarship. Ask class, category (voluntary), institution, marks/merit-list position, domicile, family status and other scheme-specific fields."
