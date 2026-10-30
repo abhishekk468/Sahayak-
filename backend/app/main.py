@@ -6,9 +6,11 @@ from app.schemas import (
     TranslateRequest, TranslateResponse, VoiceTextRequest,
     VoiceTextResponse, HealthResponse
 )
+from app.schemas import SchemeMatchRequest, SchemeMatchResponse, SchemeSummary, RagAskRequest, RagAskResponse
 from app.services.indictrans2_service import IndicTrans2Service
 from app.services.asr_service import ASRService, ASRNotConfiguredError
 from app.services.profile_extractor import extract_profile_from_english
+from app.services.scheme_service import ask_sources, match, schemes
 
 settings = get_settings()
 app = FastAPI(
@@ -38,6 +40,18 @@ def health():
         status="ok", translation_service="lazy-loaded",
         asr_provider=settings.asr_provider, tts_provider=settings.tts_provider
     )
+
+@app.get("/schemes", response_model=list[SchemeSummary])
+def list_schemes():
+    return schemes()
+
+@app.post("/schemes/match", response_model=SchemeMatchResponse)
+def match_schemes(request: SchemeMatchRequest):
+    return {"matches": match(request.profile, request.scheme_ids), "disclaimer": "Preliminary screening only. This is not government approval or an entitlement decision."}
+
+@app.post("/rag/ask", response_model=RagAskResponse)
+def rag_ask(request: RagAskRequest):
+    return ask_sources(request.question, request.scheme_id)
 
 @app.post("/translate", response_model=TranslateResponse)
 def translate(request: TranslateRequest):

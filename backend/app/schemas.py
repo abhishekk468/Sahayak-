@@ -32,3 +32,43 @@ class HealthResponse(BaseModel):
     translation_service: str
     asr_provider: str
     tts_provider: str
+
+MatchStatus = Literal["POTENTIAL_MATCH", "NOT_MATCHED", "NEED_MORE_INFORMATION", "MANUAL_REVIEW"]
+
+class SchemeSummary(BaseModel):
+    scheme_id: str
+    scheme_name: str
+    segment: str
+    benefit_summary: str | None = None
+    official_source_url: str
+    eligibility_mode: str
+
+class SchemeMatchRequest(BaseModel):
+    profile: dict[str, Any]
+    scheme_ids: list[str] | None = None
+
+class SchemeMatch(BaseModel):
+    scheme_id: str
+    scheme_name: str
+    status: MatchStatus
+    reasons: list[str]
+    official_source_url: str
+    documents: list[str] = []
+
+class SchemeMatchResponse(BaseModel):
+    matches: list[SchemeMatch]
+    disclaimer: str
+
+class RagAskRequest(BaseModel):
+    question: str = Field(min_length=1, max_length=1000)
+    scheme_id: str | None = None
+
+class RagCitation(BaseModel):
+    title: str
+    url: str
+    section: str | None = None
+
+class RagAskResponse(BaseModel):
+    answer: str
+    citations: list[RagCitation]
+    source_found: bool
