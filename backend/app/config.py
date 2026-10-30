@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     model_max_length: int = 256
     model_num_beams: int = 5
     asr_provider: str = "mock"
+    asr_model_id: str = "small"
+    asr_device: str = "cpu"
+    asr_compute_type: str = "int8"
     gemini_api_key: str | None = None
     tts_provider: str = "none"
     database_url: str | None = None

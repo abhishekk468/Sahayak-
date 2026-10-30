@@ -9,6 +9,7 @@ indictranstoolkit>=1.1.1
 sentencepiece>=0.2
 sacremoses>=0.1
 numpy>=2.1
+faster-whisper>=1.1.0
 # Install PyTorch separately from https://pytorch.org/get-started/locally/
 # Optional: sqlalchemy>=2.0 psycopg[binary]>=3.2
 # Optional RAG: faiss-cpu sentence-transformers pypdf

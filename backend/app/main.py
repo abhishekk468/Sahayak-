@@ -25,7 +25,12 @@ translator = IndicTrans2Service(
     settings.indic_en_model, settings.en_indic_model,
     settings.model_device, settings.model_max_length, settings.model_num_beams
 )
-asr = ASRService(settings.asr_provider)
+asr = ASRService(
+    settings.asr_provider,
+    settings.asr_model_id,
+    settings.asr_device,
+    settings.asr_compute_type,
+)
 
 @app.get("/health", response_model=HealthResponse)
 def health():
@@ -94,3 +99,5 @@ async def voice_audio(file: UploadFile = File(...)):
         }
     except ASRNotConfiguredError as exc:
         raise HTTPException(status_code=501, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc

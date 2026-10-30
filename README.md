@@ -30,6 +30,16 @@ cp .env.example .env
 uvicorn app.main:app --reload
 ```
 
+For local voice transcription, set these values in `.env` before starting the API:
+```dotenv
+ASR_PROVIDER=whisper
+ASR_MODEL_ID=tiny
+ASR_DEVICE=cpu
+ASR_COMPUTE_TYPE=int8
+```
+The first audio request downloads the selected faster-whisper model from Hugging Face.
+Use `small` or a larger model when CPU accuracy is more important than latency.
+
 Open API docs at http://127.0.0.1:8000/docs
 
 ## Quick translation test
@@ -43,7 +53,7 @@ The first request downloads the selected model checkpoint(s) from Hugging Face. 
 ## Current status
 - `/translate` calls IndicTrans2 when dependencies and model weights are installed.
 - `/voice-command/text` tests the pipeline from an already-transcribed Hindi/English sentence.
-- `/voice-command/audio` returns a clear 501 until a real ASR provider is configured.
+- `/voice-command/audio` runs local faster-whisper when `ASR_PROVIDER=whisper`; the default `mock` provider returns a clear 501.
 - Real ASR, Gemini, RAG, TTS, and WhatsApp still require coding-agent implementation and provider credentials/configuration.
 
 ## Language support
