@@ -40,6 +40,11 @@ ASR_COMPUTE_TYPE=int8
 The first audio request downloads the selected faster-whisper model from Hugging Face.
 Use `small` or a larger model when CPU accuracy is more important than latency.
 
+IndicTrans2 model access may require accepting the checkpoint terms and authenticating
+with Hugging Face. Set `HF_TOKEN` in `.env`, or run `huggingface-cli login`, before using
+Hindi-to-English translation. Whisper transcription remains local and does not require
+that token.
+
 Open API docs at http://127.0.0.1:8000/docs
 
 ## Quick translation test

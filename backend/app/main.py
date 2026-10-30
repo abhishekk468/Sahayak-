@@ -73,7 +73,7 @@ def voice_text(request: VoiceTextRequest):
             extracted_profile=profile,
             clarification_needed=clarification,
             pipeline_status="TRANSCRIBED_TRANSLATED_PROFILE_DEMO",
-            note="Scheme matching, cited RAG, live ASR and TTS remain to be completed by following VSCODE_AGENT_TASK.md."
+            note="Voice transcription is available with the configured ASR provider. Scheme matching, cited RAG and TTS remain separate capabilities."
         )
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
